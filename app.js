@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express()
 app.set("view engine","ejs")
+
+//database connection
+require("./model/index")
+
 app.use(express.json())//explicity use for form data
 app.use(express.urlencoded({extended:true}))
 app.get("/",(req,res)=>{
@@ -12,6 +16,8 @@ app.get("/createform",(req,res)=>{
 
 app.post("/createform",(req,res)=>{
     console.log(req.body)
+    res.send("form submitted successfully")
+    
 }
     
 )
