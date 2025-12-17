@@ -1,4 +1,5 @@
 const express = require("express");
+const { blogs } = require("./model/index");
 const app = express()
 app.set("view engine","ejs")
 
@@ -14,8 +15,17 @@ app.get("/createform",(req,res)=>{
     res.render("createform")
 })
 
-app.post("/createform",(req,res)=>{
-    console.log(req.body)
+app.post("/createform",async(req,res)=>{
+   const title= req.body.title;
+   const subTitle= req.body.subTitle;
+   const description= req.body.description;
+
+await blogs.create({
+    title: title,
+    subTitle: subTitle,
+    description: description
+})
+
     res.send("form submitted successfully")
     
 }

@@ -3,17 +3,17 @@ const { Sequelize,DataTypes } = require("sequelize");
 
 //la sequelize yo config
 const sequelize = new Sequelize(dbconfig.DB, dbconfig.USER, dbconfig.PASSWORD,{
-    host: dbConfig.HOST,
+    host: dbconfig.HOST,
     dialect: dbconfig.dialect,
     operatorsAliases: false,
     port: 3306,
     //port : 7013,
 
     pool: {
-        max: dbConfig.pool.max,
-        min: dbConfig.pool.min,
-        acquire: dbConfig.pool.acquire,
-        idle: dbConfig.pool.idle,
+        max: dbconfig.pool.max,
+        min: dbconfig.pool.min,
+        acquire: dbconfig.pool.acquire,
+        idle: dbconfig.pool.idle,
     },
 });
 
@@ -33,7 +33,6 @@ sequelize
 
  //importing model files
  db.blogs = require("./blogModel.js")(sequelize, DataTypes);
-
 
 
 
