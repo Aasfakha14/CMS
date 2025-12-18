@@ -94,43 +94,17 @@
     </div>
 
     <!-- CARD SECTION -->
-    <div class="container">
-
+   <div class="card">
+    <% for (let i = 0; i< blogs.length; i++){
+        let blog = blogs[i];
+        %> 
         <div class="card">
-            <h2>Card Title 1</h2>
-            <h3>Subtitle goes here</h3>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                Doloribus, magnam repellat! 
-            </p>
+            <div class="card-title"><%=blog.title %></div>
+            <div class="card-subTitle"><%=blog.subTitle %></div>
+            <div class="card-description"><%=blog.description %></div>
         </div>
-
-        <div class="card">
-            <h2>Card Title 2</h2>
-            <h3>Subtitle example</h3>
-            <p>
-                This is a sample description for the second card. 
-                Clean and simple UI layout.
-            </p>
-        </div>
-
-        <div class="card">
-            <h2>Card Title 3</h2>
-            <h3>Small subtitle</h3>
-            <p>
-                Cards are responsive and automatically adjust based on screen width.
-            </p>
-        </div>
-
-        <div class="card">
-            <h2>Card Title 4</h2>
-            <h3>Another subtitle</h3>
-            <p>
-                You can add unlimited cards using the same pattern.
-            </p>
-        </div>
-
-    </div>
+    <% } %>
+   </div>
 
 </body>
 </html>
