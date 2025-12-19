@@ -6,34 +6,38 @@
     <title>Homepage with Cards</title>
 
     <style>
-        /* ---- NAVBAR ---- */
-        body {
+        /* ---- GLOBAL ---- */
+        * {
+            box-sizing: border-box;
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f4f4;
+            padding: 0;
         }
 
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+
+        /* ---- NAVBAR ---- */
         .navbar {
             width: 100%;
             background-color: #333;
-            padding: 15px 20px;
-            box-sizing: border-box;
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .navbar .logo {
-            color: white;
-            font-size: 22px;
+            color: #fff;
+            font-size: 24px;
             font-weight: bold;
         }
 
         .navbar ul {
             list-style: none;
             display: flex;
-            margin: 0;
-            padding: 0;
         }
 
         .navbar ul li {
@@ -41,44 +45,91 @@
         }
 
         .navbar ul li a {
-            color: white;
+            color: #fff;
             text-decoration: none;
             font-size: 16px;
+            transition: color 0.3s;
         }
 
         .navbar ul li a:hover {
             color: #ffcc00;
         }
 
-        /* ---- CARD LAYOUT ---- */
+        /* ---- CARD GRID ---- */
         .container {
             width: 90%;
+            max-width: 1200px;
             margin: 40px auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
+        /* ---- CARD ---- */
         .card {
-            background: white;
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        .card h2 {
-            margin-top: 0;
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
         }
 
-        .card h3 {
-            margin: 5px 0;
-            color: #666;
+        .card-subTitle {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 15px;
         }
 
-        .card p {
-            color: #444;
-            line-height: 1.5;
+        .card-description {
+            font-size: 16px;
+            color: #555;
+            flex-grow: 1;
         }
+
+        .card button {
+            align-self: flex-start;
+            margin-top: 15px;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffcc00;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .card button:hover {
+            background-color: #e6b800;
+        }
+
     </style>
 </head>
 <body>
@@ -88,23 +139,28 @@
         <div class="logo">My Website</div>
         <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="/createform">Add blog</a></li>
+            <li><a href="/createform">Add Blog</a></li>
             <li><a href="#">About</a></li>
         </ul>
     </div>
 
-    <!-- CARD SECTION -->
-   <div class="card">
-    <% for (let i = 0; i< blogs.length; i++){
-        let blog = blogs[i];
-        %> 
-        <div class="card">
-            <div class="card-title"><%=blog.title %></div>
-            <div class="card-subTitle"><%=blog.subTitle %></div>
-            <div class="card-description"><%=blog.description %></div>
-        </div>
-    <% } %>
-   </div>
+    <!-- CARD GRID -->
+    <div class="container">
+        <% for (let i = 0; i < blogs.length; i++) { 
+            let blog = blogs[i]; %>
+            <div class="card">
+                <% if(blog.image){ %>
+                    <img src="<%= blog.image %>" alt="Blog Image">
+                <% } %>
+                <div class="card-content">
+                    <div class="card-title"><%= blog.title %></div>
+                    <div class="card-subTitle"><%= blog.subTitle %></div>
+                    <div class="card-description"><%= blog.description %></div>
+                    <button>Read More</button>
+                </div>
+            </div>
+        <% } %>
+    </div>
 
 </body>
 </html>
