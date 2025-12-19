@@ -31,11 +31,17 @@ await blogs.create({
     description: description
 })
 
-    res.send("form submitted successfully")
+    res.redirect("/")
+
+
     
 }
     
 )
+
+app.get("/singlepage",(req,res)=>{
+    res.render("Singlepage")
+})
 
 app.listen(3000,function(){
     console.log("server running 3000")
