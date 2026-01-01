@@ -111,6 +111,7 @@
         .back-button:hover {
             background-color: #e6b800;
         }
+        
 
         /* ---- FOOTER ---- */
         .footer {
@@ -147,38 +148,24 @@
     <div class="blog-container">
         <img src="https://source.unsplash.com/800x400/?coding" alt="Blog Image" class="blog-image">
         <div class="blog-content">
-            <div class="blog-title">Understanding JavaScript Closures</div>
-            <div class="blog-meta">
-                <span>Author: John Doe</span>
-                <span>Jan 12, 2025</span>
-            </div>
+            <div class="blog-title"><%-data[0].title%>  </div>
+          
             <div class="blog-description">
                 <p>
-                    JavaScript closures are an important concept that allows functions to access variables from an outer function scope even after that outer function has finished executing. Closures are often used for data encapsulation, callbacks, and functional programming techniques.
+                    <%-data[0].description %>
                 </p>
+              
                 <p>
-                    Example:
-                    <br>
-                    <code>
-                        function outer(){ <br>
-                        &nbsp;&nbsp;let count = 0;<br>
-                        &nbsp;&nbsp;return function(){<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;count++;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;console.log(count);<br>
-                        &nbsp;&nbsp;}<br>
-                        }<br>
-                        const counter = outer();<br>
-                        counter(); // 1<br>
-                        counter(); // 2
-                    </code>
-                </p>
-                <p>
-                    Closures allow you to maintain private variables and create more modular, reusable code.
+                    <%-data[0].subTitle%>
                 </p>
             </div>
-            <a href="index.html" class="back-button">Back to Home</a>
+            <a href="/" class="back-button">Back to Home</a>
+            <a href="/delete/<%-data[0].id%>"><button>Delete</button> </a>  
+  <a href="/edit/<%-data[0].id%>"><button>Edit</button></a>
         </div>
     </div>
+
+  
 
     <!-- FOOTER -->
     <div class="footer">

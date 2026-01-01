@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Blog</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f4f4;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #333;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h2 {
+            color: white;
+            margin: 0;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .navbar a:hover {
+            color: #ffcc00;
+        }
+
+        /* FORM */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 70px);
+        }
+
+        .form-box {
+            background: white;
+            padding: 30px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .form-box h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            height: 90px;
+            resize: none;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .update {
+            background: #28a745;
+            color: white;
+        }
+
+        .update:hover {
+            background: #1e7e34;
+        }
+
+        .cancel {
+            background: #dc3545;
+            color: white;
+        }
+
+        .cancel:hover {
+            background: #b52a37;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <h2>Blog Management</h2>
+        <div>
+            <a href="/">Home</a>
+        </div>
+    </div>
+
+    <!-- EDIT FORM -->
+    <div class="container">
+        <div class="form-box">
+            <h3>Edit Blog</h3>
+
+            <!-- data[0] because findAll() returns array -->
+            <form action="/editPage/<%= data[0].id %>" method="POST">
+
+                <label>Title</label>
+                <input type="text" name="title" value="<%= data[0].title %>" required>
+
+                <label>Subtitle</label>
+                <input type="text" name="subTitle" value="<%= data[0].subTitle %>" required>
+
+                <label>Description</label>
+                <textarea name="description" required><%= data[0].description %></textarea>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn update">Update</button>
+                    <a href="/" style="width:48%;">
+                        <button type="button" class="btn cancel">Cancel</button>
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
