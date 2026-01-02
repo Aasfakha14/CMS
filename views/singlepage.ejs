@@ -65,12 +65,6 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        .blog-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
         .blog-content {
             padding: 30px;
         }
@@ -111,7 +105,23 @@
         .back-button:hover {
             background-color: #e6b800;
         }
-        
+
+        .action-button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            background-color: #ffcc00;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+        }
+
+        .action-button:hover {
+            background-color: #e6b800;
+        }
 
         /* ---- FOOTER ---- */
         .footer {
@@ -139,33 +149,31 @@
     <div class="navbar">
         <div class="logo">My Blog</div>
         <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="#">About</a></li>
         </ul>
     </div>
 
     <!-- BLOG DETAIL -->
     <div class="blog-container">
-        <img src="https://source.unsplash.com/800x400/?coding" alt="Blog Image" class="blog-image">
         <div class="blog-content">
-            <div class="blog-title"><%-data[0].title%>  </div>
-          
+            <div class="blog-title"><%- data[0].title %></div>
+
             <div class="blog-description">
-                <p>
-                    <%-data[0].description %>
-                </p>
-              
-                <p>
-                    <%-data[0].subTitle%>
-                </p>
+                <p><%- data[0].description %></p>
+                <p><%- data[0].subTitle %></p>
             </div>
+
             <a href="/" class="back-button">Back to Home</a>
-            <a href="/delete/<%-data[0].id%>"><button>Delete</button> </a>  
-  <a href="/edit/<%-data[0].id%>"><button>Edit</button></a>
+            <a href="/delete/<%- data[0].id %>" 
+   class="action-button"
+   onclick="return confirm('Are you sure you want to delete this blog?')">
+   Delete
+</a>
+
+            <a href="/edit/<%- data[0].id %>" class="action-button">Edit</a>
         </div>
     </div>
-
-  
 
     <!-- FOOTER -->
     <div class="footer">

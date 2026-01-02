@@ -56,25 +56,10 @@
 
         /* ---- HERO SECTION ---- */
         .hero {
-            background: url('https://source.unsplash.com/1600x500/?blog,writing') no-repeat center center/cover;
+            background-color: #333;
             color: white;
             text-align: center;
             padding: 100px 20px;
-            position: relative;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            top:0; left:0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
         }
 
         .hero h1 {
@@ -99,29 +84,8 @@
         .card {
             background-color: #fff;
             border-radius: 12px;
-            overflow: hidden;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-        }
-
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .card-content {
             padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
         }
 
         .card-title {
@@ -140,15 +104,6 @@
         .card-description {
             font-size: 16px;
             color: #555;
-            flex-grow: 1;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: #999;
-            margin-top: 15px;
         }
 
         .card button {
@@ -160,7 +115,6 @@
             color: #333;
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
 
         .card button:hover {
@@ -170,20 +124,8 @@
         /* ---- FOOTER ---- */
         .footer {
             background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
+            height: 40px;
             margin-top: 50px;
-        }
-
-        /* ---- RESPONSIVE ---- */
-        @media(max-width: 768px){
-            .hero h1 {
-                font-size: 36px;
-            }
-            .hero p {
-                font-size: 16px;
-            }
         }
     </style>
 </head>
@@ -201,47 +143,31 @@
 
     <!-- HERO SECTION -->
     <div class="hero">
-        <div class="hero-content">
-            <h1>Welcome to My Blog</h1>
-            <p>Read the latest articles and insights on web development, design, and tech.</p>
-        </div>
+        <h1>Welcome to My Blog</h1>
+        <p>Read the latest articles and insights on web development, design, and tech.</p>
     </div>
 
     <!-- BLOG CARDS -->
     <div class="container">
-        <!-- Example Card 1 -->
-        <div class="card">
-            <img src="https://source.unsplash.com/400x200/?coding" alt="Blog Image">
-            <div class="card-content">
-                <% if(blogs.length==0){ %>
+        <% if(blogs.length==0){ %>
             <h1>No Blogs</h1>
-
-        <%} else { %>
-
-        <% for (let i = 0; i < blogs.length; i++) { 
-            let blog = blogs[i]; %>
-            <div class="card">
-                <% if(blog.image){ %>
-                    <img src="<%= blog.image %>" alt="Blog Image">
-                <% } %>
-                
-                <div class="card-content">
+        <% } else { %>
+            <% for (let i = 0; i < blogs.length; i++) { 
+                let blog = blogs[i]; %>
+                <div class="card">
                     <div class="card-title"><%= blog.title %></div>
                     <div class="card-subTitle"><%= blog.subTitle %></div>
                     <div class="card-description"><%= blog.description %></div>
-                    <button><a href="/singlepage/<%- blog.id%>">Read More</a></button>
+                    <button>
+                        <a href="/singlepage/<%- blog.id %>">Read More</a>
+                    </button>
                 </div>
-            </div>
+            <% } %>
         <% } %>
-       <% } %>
-        
-    </div>
     </div>
 
     <!-- FOOTER -->
-    <div class="footer">
-        &copy; 2025 My Blog. All Rights Reserved.
-    </div>
+    <div class="footer"></div>
 
 </body>
 </html>
