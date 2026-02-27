@@ -1,150 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Edit Blog</title>
+<meta charset="UTF-8">
+<title>Edit Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f4f4;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-        /* NAVBAR */
-        .navbar {
-            background: #333;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
 
-        .navbar h2 {
-            color: white;
-            margin: 0;
-        }
+/* NAVBAR */
+.navbar {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
 
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-        }
+.navbar h2 {
+    font-weight: 600;
+}
 
-        .navbar a:hover {
-            color: #ffcc00;
-        }
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
 
-        /* FORM */
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 70px);
-        }
+.navbar a:hover {
+    background: rgba(255,255,255,0.2);
+}
 
-        .form-box {
-            background: white;
-            padding: 30px;
-            width: 400px;
-            border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-        }
+/* CONTAINER */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
 
-        .form-box h3 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+/* FORM CARD */
+.form-box {
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    animation: fadeIn 0.6s ease-in-out;
+}
 
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 6px;
-        }
+.form-box h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #333;
+}
 
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 18px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+/* INPUT FIELDS */
+.input-group {
+    margin-bottom: 20px;
+}
 
-        textarea {
-            height: 90px;
-            resize: none;
-        }
+input, textarea {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 14px;
+    background: #f9f9f9;
+    transition: 0.3s ease;
+}
 
-        .btn-group {
-            display: flex;
-            justify-content: space-between;
-        }
+input:focus, textarea:focus {
+    border-color: #667eea;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(102,126,234,0.15);
+}
 
-        .btn {
-            width: 48%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 15px;
-        }
+textarea {
+    resize: none;
+    min-height: 120px;
+}
 
-        .update {
-            background: #28a745;
-            color: white;
-        }
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    transition: 0.3s ease;
+}
 
-        .update:hover {
-            background: #1e7e34;
-        }
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(118,75,162,0.3);
+}
 
-        .cancel {
-            background: #dc3545;
-            color: white;
-        }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        .cancel:hover {
-            background: #b52a37;
-        }
-    </style>
+@media (max-width: 500px) {
+    .form-box {
+        padding: 25px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- NAVBAR -->
-    <div class="navbar">
-        <h2>Blog Management</h2>
-        <div>
-            <a href="/">Home</a>
-        </div>
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>Blog Management</h2>
+    <a href="/">Home</a>
+</div>
+
+<!-- FORM -->
+<div class="container">
+    <div class="form-box">
+        <h3>Edit Blog</h3>
+
+        <form action="/edit/<%= blog.id %>" method="POST">
+            
+            <div class="input-group">
+                <input type="text" name="title" value="<%= blog.title %>" placeholder="Blog Title" required>
+            </div>
+
+            <div class="input-group">
+                <input type="text" name="subTitle" value="<%= blog.subTitle %>" placeholder="Sub Title" required>
+            </div>
+
+            <div class="input-group">
+                <textarea name="description" placeholder="Blog Description" required><%= blog.description %></textarea>
+            </div>
+
+            <button type="submit">Update Blog</button>
+        </form>
     </div>
-
-    <!-- EDIT FORM -->
-    <div class="container">
-        <div class="form-box">
-            <h3>Edit Blog</h3>
-
-            <!-- data[0] because findAll() returns array -->
-            <form action="/editPage/<%= data[0].id %>" method="POST">
-
-                <label>Title</label>
-                <input type="text" name="title" value="<%= data[0].title %>" required>
-
-                <label>Subtitle</label>
-                <input type="text" name="subTitle" value="<%= data[0].subTitle %>" required>
-
-                <label>Description</label>
-                <textarea name="description" required><%= data[0].description %></textarea>
-
-                <div class="btn-group">
-                    <button type="submit" class="btn update">Update</button>
-                    <a href="/" style="width:48%;">
-                        <button type="button" class="btn cancel">Cancel</button>
-                    </a>
-                </div>
-
-            </form>
-        </div>
-    </div>
+</div>
 
 </body>
 </html>

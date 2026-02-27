@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home | My Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ffd700;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: white;
+            color: #764ba2;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #ffd700;
+            color: black;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        @media(max-width:768px){
+            .navbar {
+                flex-direction: column;
+            }
+
+            .navbar a {
+                margin: 10px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">MyBlog</div>
+        <div>
+            <a href="/">Home</a>
+            <a href="/blogs">Blogs</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <h1>Welcome to My Blog Website</h1>
+        <p>Discover insightful articles, share your thoughts, and explore web development knowledge in one place.</p>
+        <a href="/blogs" class="btn">Explore Blogs</a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        © 2026 My Blog | Developed by Aasfa Khan
+    </div>
+
+</body>
+</html>

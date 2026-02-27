@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Contact Form</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    .contact-container {
+        background: #ffffff;
+        padding: 40px;
+        width: 100%;
+        max-width: 450px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .contact-container h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 14px 15px;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        outline: none;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        background: #f9f9f9;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #667eea;
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+    }
+
+    textarea {
+        resize: none;
+        min-height: 120px;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(118, 75, 162, 0.3);
+    }
+
+    button:active {
+        transform: translateY(0);
+        box-shadow: none;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 500px) {
+        .contact-container {
+            margin: 20px;
+            padding: 25px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="contact-container">
+    <h1>Contact Me</h1>
+    <form>
+        <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+        </div>
+
+        <div class="form-group">
+            <input type="email" placeholder="Your Email" required>
+        </div>
+
+        <div class="form-group">
+            <textarea placeholder="Your Message" required></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+
+</body>
+</html>

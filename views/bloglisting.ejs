@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Blog</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 18px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    color: white;
+    padding: 60px 20px 30px;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* CREATE BUTTON */
+.create-btn {
+    display: block;
+    width: fit-content;
+    margin: 20px auto 40px;
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    color: white;
+    transition: 0.3s ease;
+}
+
+.create-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(91,134,229,0.3);
+}
+
+/* BLOG GRID */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.card-subTitle {
+    font-size: 14px;
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.read-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    background: #f1f1f1;
+    color: #333;
+    transition: 0.3s;
+}
+
+.read-btn:hover {
+    background: #ddd;
+}
+
+/* EMPTY MESSAGE */
+.empty {
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+    font-size: 18px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/blogs">Blogs</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>All Blogs</h1>
+    <p>Explore all published articles</p>
+</div>
+
+<a href="/create" class="create-btn">+ Create New Blog</a>
+
+<% if(blogs.length === 0){ %>
+    <p class="empty">No blogs available yet.</p>
+<% } else { %>
+<div class="container">
+    <% blogs.forEach(blog => { %>
+        <div class="card">
+            <div class="card-title"><%= blog.title %></div>
+            <div class="card-subTitle"><%= blog.subTitle %></div>
+            <a href="/blogs/<%= blog.id %>" class="read-btn">Read More</a>
+        </div>
+    <% }) %>
+</div>
+<% } %>
+
+</body>
+</html>

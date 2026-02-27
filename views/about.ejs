@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        padding: 20px;
+    }
+
+    .about-card {
+        background: #ffffff;
+        max-width: 600px;
+        width: 100%;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .about-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    }
+
+    .about-card h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .about-card p {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .highlight {
+        color: #667eea;
+        font-weight: 600;
+    }
+
+    .tech-stack {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .tech-badge {
+        background: #f1f3ff;
+        color: #667eea;
+        padding: 8px 14px;
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    @media (max-width: 500px) {
+        .about-card {
+            padding: 25px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="about-card">
+    <h1>About Me</h1>
+    <p>Hello, I am <span class="highlight">Aasfa Khan</span>.</p>
+    <p>
+        This blog system is developed using modern backend technologies
+        for performance and scalability.
+    </p>
+
+    <div class="tech-stack">
+        <span class="tech-badge">Node.js</span>
+        <span class="tech-badge">Express</span>
+        <span class="tech-badge">MySQL</span>
+        <span class="tech-badge">Sequelize</span>
+    </div>
+</div>
+
+</body>
+</html>

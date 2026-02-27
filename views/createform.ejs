@@ -16,7 +16,7 @@
 
         /* NAVBAR */
         .navbar {
-            background-color: #333;
+            background-color: #2f6194;
             padding: 15px;
         }
         .navbar a {
@@ -41,12 +41,12 @@
             width: 350px;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 10px rgba(70, 138, 198, 0.2);
         }
 
         .card h2 {
             margin: 0;
-            color: #333;
+            color: #305376;
         }
 
         .card p {
@@ -66,7 +66,7 @@
             margin-top: 15px;
             padding: 10px;
             width: 100%;
-            background-color: #333;
+            background-color: #376c92;
             color: white;
             border: none;
             border-radius: 5px;
@@ -74,7 +74,7 @@
             cursor: pointer;
         }
         form button:hover {
-            background-color: #555;
+            background-color: #3d6692;
         }
     </style>
 </head>
@@ -90,10 +90,11 @@
     <!-- CARD WITH FORM -->
     <div class="card-container">
         <div class="card">
-            <h2>Registration Form</h2>
-            <p>Fill the form below:</p>
+            <h2>Create New Blog</h2>
+            <p>Fill the Blog:</p>
 
-            <form action="/createform" method="post">
+           <form action="/create" method="POST">
+
                 <input type="text" id="title" name="title" placeholder="Enter your name" required>
                 <input type="text" id="subTitle" name="subTitle" placeholder="Enter subtitle" required>
                 <textarea id="description" name="description" placeholder="Enter your message"></textarea>
